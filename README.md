@@ -26,8 +26,8 @@ import (
 )
 
 func main() {
-	info := whatlanggo.Detect("Test para")
-	fmt.Println("Language:", info.Lang.String(), " Script:", whatlanggo.Scripts[info.Script], " Confidence: ", info.Confidence)
+	info := langdetect.Detect("Test para")
+	fmt.Println("Language:", info.Lang.String(), " Script:", langdetect.Scripts[info.Script], " Confidence: ", info.Confidence)
 }
 ```
 
@@ -43,26 +43,26 @@ import (
 
 func main() {
 	//Blacklist
-	options := whatlanggo.Options{
-		Blacklist: map[whatlanggo.Lang]bool{
-			whatlanggo.Ydd: true,
+	options := langdetect.Options{
+		Blacklist: map[langdetect.Lang]bool{
+			langdetect.Ydd: true,
 		},
 	}
 
-	info := whatlanggo.DetectWithOptions("האקדמיה ללשון העברית", options)
+	info := langdetect.DetectWithOptions("האקדמיה ללשון העברית", options)
 
-	fmt.Println("Language:", info.Lang.String(), "Script:", whatlanggo.Scripts[info.Script])
+	fmt.Println("Language:", info.Lang.String(), "Script:", langdetect.Scripts[info.Script])
 
 	//Whitelist
-	options1 := whatlanggo.Options{
-		Whitelist: map[whatlanggo.Lang]bool{
-			whatlanggo.Epo: true,
-			whatlanggo.Ukr: true,
+	options1 := langdetect.Options{
+		Whitelist: map[langdetect.Lang]bool{
+			langdetect.Epo: true,
+			langdetect.Ukr: true,
 		},
 	}
 
-	info = whatlanggo.DetectWithOptions("Mi ne scias", options1)
-	fmt.Println("Language:", info.Lang.String(), " Script:", whatlanggo.Scripts[info.Script])
+	info = langdetect.DetectWithOptions("Mi ne scias", options1)
+	fmt.Println("Language:", info.Lang.String(), " Script:", langdetect.Scripts[info.Script])
 }
 ```
 
